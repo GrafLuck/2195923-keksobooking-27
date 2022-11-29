@@ -119,20 +119,16 @@ const generateRandomFloat = (from, to, precision) => {
   return +(Math.round((Math.random() * (to - from) + from) * powerPrecision) / powerPrecision).toFixed(precision);
 };
 
-const getFeatures = () => {
-  return MockParameter.features.filter(() => { return generateRandomInteger(0, 1);});
-};
+const getFeatures = () => MockParameter.features.filter(() => generateRandomInteger(0, 1));
 
-const getPhotos = () => {
-  return MockParameter.advertismentPhotos.filter(() => { return generateRandomInteger(0, 1);});
-};
+const getPhotos = () => MockParameter.advertismentPhotos.filter(() => generateRandomInteger(0, 1));
 
 const createAdvertisement = (_, index) => {
   const latitude = generateRandomFloat(MockParameter.Latitude.MIN, MockParameter.Latitude.MAX, GEOGRAPHIC_COORDINATE_ACCURACY);
   const longitude = generateRandomFloat(MockParameter.Longitude.MIN, MockParameter.Longitude.MAX, GEOGRAPHIC_COORDINATE_ACCURACY);
   return {
     author: {
-      avatar: `img/avatars/user${index < 9 ? '0' + (index + 1) : (index + 1)}.png`,
+      avatar: `img/avatars/user${index < 9 ? `0${index + 1}` : (index + 1)}.png`,
     },
     location: {
       lat: latitude,
