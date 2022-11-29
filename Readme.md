@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг»
 
 * Студент: [Dmitriy Lutsishin](https://up.htmlacademy.ru/javascript/27/user/2195923).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Толстоног](https://htmlacademy.ru/profile/id620625).
 
 ---
 
