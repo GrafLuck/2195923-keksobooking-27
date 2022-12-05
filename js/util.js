@@ -15,7 +15,7 @@ const generateRandomInteger = (from, to) => {
     [from, to] = [to, from];
   }
 
-  return Math.round(Math.random() * (to - from) + to);
+  return Math.round(Math.random() * (to - from) + from);
 };
 
 const generateRandomFloat = (from, to, precision) => {
