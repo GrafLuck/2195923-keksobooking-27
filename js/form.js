@@ -63,6 +63,26 @@ const onTypeSelectChange = (evt) => {
   pristine.validate(price);
 };
 
+const onTimeInSelectChange = (evt) => {
+  const timeOutOptions = timeout.querySelectorAll('option');
+  for (const option of timeOutOptions) {
+    if (option.value === evt.target.value) {
+      option.selected = true;
+      break;
+    }
+  }
+};
+
+const onTimeOutSelectChange = (evt) => {
+  const timeInOptions = timein.querySelectorAll('option');
+  for (const option of timeInOptions) {
+    if (option.value === evt.target.value) {
+      option.selected = true;
+      break;
+    }
+  }
+};
+
 const onRoomNumberChange = () => {
   pristine.validate(capacity);
 };
@@ -80,6 +100,8 @@ const setFormEventListeners = () => {
   form.addEventListener('submit', onFormSubmit);
   type.addEventListener('change', onTypeSelectChange);
   room.addEventListener('change', onRoomNumberChange);
+  timein.addEventListener('change', onTimeInSelectChange);
+  timeout.addEventListener('change', onTimeOutSelectChange);
 };
 
 export {switchFormToInactiveState, switchFormToActiveState, setFormEventListeners};
