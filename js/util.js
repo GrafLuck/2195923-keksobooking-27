@@ -1,3 +1,7 @@
+import {getConstant} from './constant.js';
+
+const {TIME_SHOW_ALERT, TIMEOUT_DELAY} = getConstant();
+
 const generateRandomInteger = (from, to) => {
   if (typeof from !== 'number' || typeof to !== 'number') {
     return NaN;
@@ -39,4 +43,33 @@ const generateRandomFloat = (from, to, precision) => {
   return +(Math.round((Math.random() * (to - from) + from) * powerPrecision) / powerPrecision).toFixed(precision);
 };
 
-export {generateRandomInteger, generateRandomFloat};
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.zIndex = '100';
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.left = '0';
+  alertContainer.style.top = '0';
+  alertContainer.style.right = '0';
+  alertContainer.style.padding = '10px 3px';
+  alertContainer.style.fontSize = '30px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'red';
+
+  alertContainer.textContent = message;
+
+  document.body.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, TIME_SHOW_ALERT);
+};
+
+const debounce = (callback, timeoutDelay = TIMEOUT_DELAY) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+export {generateRandomInteger, generateRandomFloat, showAlert, debounce};

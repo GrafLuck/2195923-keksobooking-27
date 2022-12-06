@@ -9,8 +9,10 @@ const addFeaturesInCard = (featureContainer, features) => {
     featureContainer.classList.add('hidden');
     return;
   }
+
   const featureElements = Array.from(featureContainer.querySelectorAll('.popup__feature'));
   const featureClasses = Array.from(features, (feature) => `popup__feature--${feature}`);
+
   featureElements.forEach((featureElement) => {
     const featureElementClass = featureElement.classList[1];
     if (!featureClasses.includes(featureElementClass)) {

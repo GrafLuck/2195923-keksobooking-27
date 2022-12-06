@@ -1,11 +1,20 @@
-import { createMockAdvertisements } from './mock-data.js';
-import { getCardAdvertisement } from './card-advertisement.js';
-import {switchFormToInactiveState, switchFormToActiveState, setFormEventListeners} from './form.js';
+import { initializeMap, renderAdvertisementMarkers } from './map.js';
+import { switchFormToInactiveState, setFormEventListeners } from './form.js';
+import { switchFiltersToInactiveState, switchFiltersToActiveState, setFilterEventListeners } from './filter.js';
+import { showAlert } from './util.js';
+import { getData } from './network.js';
+import { setData } from './storage.js';
 
-const mapCanvas = document.querySelector('#map-canvas');
+const onSuccessGetData = (data) => {
+  setData(data);
+  renderAdvertisementMarkers(data);
+  switchFiltersToActiveState();
+  setFilterEventListeners();
+};
 
-const advertisements = createMockAdvertisements();
-mapCanvas.append(getCardAdvertisement(advertisements[1]));
+switchFiltersToInactiveState();
 switchFormToInactiveState();
-switchFormToActiveState();
+
+initializeMap();
+getData(onSuccessGetData, showAlert);
 setFormEventListeners();

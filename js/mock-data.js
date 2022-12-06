@@ -1,4 +1,4 @@
-import { generateRandomFloat, generateRandomInteger } from './util.js';
+import { generateRandomInteger, generateRandomFloat } from './util.js';
 import { getConstant } from './constant.js';
 
 const {GEOGRAPHIC_COORDINATE_ACCURACY, COUNT_DISPLAY_MARKERS} = getConstant();
